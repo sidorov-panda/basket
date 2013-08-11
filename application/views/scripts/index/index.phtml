@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div>
+            <table>
+                <tr>
+                    <td>Туристы:</td>
+                    <td>Заказ:</td>
+                </tr>
+                <?php foreach ($this->tourists as $tourist) {
+ ?>
+                    <tr>
+                        <td>
+                        <?= $tourist->first_name ?>
+                    </td>
+                    <td>
+<?php foreach ($this->services[$tourist->id] as $service) { ?>
+                        <div>
+                            <?= $service->application ?>
+                        </div>
+                        <div>
+<?php var_dump(json_encode($service->value)); ?>
+                            <ul>
+
+                                <?php foreach (json_decode($service->value) as $k => $v) {
+ ?>
+                                    <?= $v ?>
+<?php } ?>
+                            </ul>
+                        </div>
+<?php } ?>
+                    </td>
+                </tr>
+<?php } ?>
+            </table>
+        </div>
+    </body>
+</html>
